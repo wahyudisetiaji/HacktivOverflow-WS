@@ -37,71 +37,68 @@
 </template>
 
 <script>
-import AllAnswer from '@/components/Home/AllAnswer.vue'
-import {mapState, mapActions} from 'vuex'
-import moment from 'moment'
-import axios from 'axios'
-import swal from 'sweetalert2'
+import AllAnswer from "@/components/Home/AllAnswer.vue";
+import { mapState, mapActions } from "vuex";
+import moment from "moment";
+import axios from "axios";
+import swal from "sweetalert2";
 
 export default {
-    components: {
-      AllAnswer
+  components: {
+    AllAnswer
+  },
+  computed: {
+    ...mapState({
+      oneQuestions: "oneQuestions",
+      token: "token"
+    })
+  },
+  methods: {
+    ...mapActions(["getOneQuestions"]),
+    moment: function(date) {
+      return moment(date);
     },
-        computed: {
-        ...mapState({
-            oneQuestions: 'oneQuestions',
-            token: 'token',
-        }),
-    },
-    methods: {
-        ...mapActions([
-            'getOneQuestions',
-        ]),
-        moment: function (date) {
-            return moment(date);
-        },
-        upvote () {
-            let id = this.$route.params.id
-            let token = localStorage.getItem('token')
-            axios({
-                method: 'PUT',
-                url: `http://localhost:3000/questions/update/upvote/${id}`,
-                headers: {
-                    token
-                }
-            })
-            .then((result) => {
-                swal(result.data.message)
-            })
-            .catch((err) => {
-                swal(err.message)
-            });
-        },
-        downvote () {
-            let id = this.$route.params.id
-            let token = localStorage.getItem('token')
-            axios({
-                method: 'PUT',
-                url: `http://localhost:3000/questions/update/downvote/${id}`,
-                headers: {
-                    token
-                }
-            })
-            .then((result) => {
-                swal(result.data.message)
-            })
-            .catch((err) => {
-                swal(err.message)
-            });
+    upvote() {
+      let id = this.$route.params.id;
+      let token = localStorage.getItem("token");
+      axios({
+        method: "PUT",
+        url: `http://35.192.235.119/questions/update/upvote/${id}`,
+        headers: {
+          token
         }
+      })
+        .then(result => {
+          swal(result.data.message);
+        })
+        .catch(err => {
+          swal(err.message);
+        });
     },
-    created () {
-        let id = this.$route.params.id
-        this.getOneQuestions(id)
+    downvote() {
+      let id = this.$route.params.id;
+      let token = localStorage.getItem("token");
+      axios({
+        method: "PUT",
+        url: `http://35.192.235.119/questions/update/downvote/${id}`,
+        headers: {
+          token
+        }
+      })
+        .then(result => {
+          swal(result.data.message);
+        })
+        .catch(err => {
+          swal(err.message);
+        });
     }
-}
+  },
+  created() {
+    let id = this.$route.params.id;
+    this.getOneQuestions(id);
+  }
+};
 </script>
 
 <style>
-
 </style>

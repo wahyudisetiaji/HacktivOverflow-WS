@@ -54,7 +54,7 @@
         let token = localStorage.getItem('token')
           axios({
             method: 'POST',
-            url: `http://localhost:3000/questions/create`,
+            url: `http://35.192.235.119/questions/create`,
             headers: {
               token
             },

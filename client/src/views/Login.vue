@@ -40,7 +40,7 @@ export default {
           if (response.status == "connected") {
             axios
               .post(
-                "http://localhost:3000/users/loginFacebook",
+                "http://35.192.235.119/users/loginFacebook",
                 response.authResponse
               )
               .then(result => {

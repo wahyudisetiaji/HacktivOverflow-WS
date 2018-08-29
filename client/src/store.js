@@ -39,7 +39,7 @@ export default new Vuex.Store({
     },
 
     login (context, data) {
-        axios.post(`http://localhost:3000/users/login`, data)
+        axios.post(`http://35.192.235.119/users/login`, data)
         .then((result) => {
           localStorage.setItem('token', result.data.data.token) 
           swal(`Hai ${result.data.data.name}, Your has been login!`)
@@ -53,7 +53,7 @@ export default new Vuex.Store({
       },
 
     register (context, data) {
-      axios.post(`http://localhost:3000/users/register`, data)
+      axios.post(`http://35.192.235.119/users/register`, data)
       .then((result) => {
         swal(`Hai ${result.data.data.name}, Register success, You must be login!`)
         router.push('/login')
@@ -68,7 +68,7 @@ export default new Vuex.Store({
       let token = localStorage.getItem('token')
       axios({
         method: 'GET',
-        url: `http://localhost:3000/questions/me`,
+        url: `http://35.192.235.119/questions/me`,
         headers: {
           token
         }
@@ -87,7 +87,7 @@ export default new Vuex.Store({
       let token = localStorage.getItem('token')
       axios({
         method: 'DELETE',
-        url: `http://localhost:3000/questions/delete/${id}`,
+        url: `http://35.192.235.119/questions/delete/${id}`,
         headers: {
           token 
         }
@@ -105,7 +105,7 @@ export default new Vuex.Store({
       let token = localStorage.getItem('token')
       axios({
         method: 'GET',
-        url: `http://localhost:3000/questions/question/${id}`,
+        url: `http://35.192.235.119/questions/question/${id}`,
         headers: {
           token
         }
@@ -123,7 +123,7 @@ export default new Vuex.Store({
       let token = localStorage.getItem('token')
       axios({
         method: 'PUT',
-        url: `http://localhost:3000/questions/update/${question._id}`,
+        url: `http://35.192.235.119/questions/update/${question._id}`,
         headers: {
           token
         },
@@ -145,7 +145,7 @@ export default new Vuex.Store({
       let token = localStorage.getItem('token')
       axios({
         method: 'GET',
-        url: `http://localhost:3000/questions`,
+        url: `http://35.192.235.119/questions`,
         headers: {
           token
         }
