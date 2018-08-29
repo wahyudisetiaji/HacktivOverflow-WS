@@ -50,7 +50,7 @@ export default {
             let token = localStorage.getItem('token')
             axios({
                 method: 'PUT',
-                url:  `http://localhost:3000/questions/update/upvote/answer/${id}`,
+                url:  `http://35.192.235.119/questions/update/upvote/answer/${id}`,
                 headers: {
                     token
                 },
@@ -70,7 +70,7 @@ export default {
             let token = localStorage.getItem('token')
             axios({
                 method: 'PUT',
-                url:  `http://localhost:3000/questions/update/downvote/answer/${id}`,
+                url:  `http://35.192.235.119/questions/update/downvote/answer/${id}`,
                 headers: {
                     token
                 },
