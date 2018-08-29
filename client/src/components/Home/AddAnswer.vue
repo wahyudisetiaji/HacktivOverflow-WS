@@ -29,6 +29,7 @@ export default {
     computed: {
         ...mapState({
             token: 'token',
+            oneQuestions: 'oneQuestions'
         }),
     },
     methods: {
@@ -51,11 +52,19 @@ export default {
             .then((result) => {
                 swal(result.data.message)
                 this.answer = ''
+                let id = this.$route.params.id
+                this.getOneQuestions(id)
             })
             .catch((err) => {
                 swal(err.message)
             })
         },
+    },
+    watch: {
+       oneQuestions: function() {
+           let id = this.$route.params.id
+            this.getOneQuestions(id);
+        }
     }
 }
 </script>
